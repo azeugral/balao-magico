@@ -5,7 +5,7 @@ Prévia do site da Balão Mágico Decor (decoração de festas e aluguel de peç
 - Paleta roxo #3f055d + dourado #f6c03a, medida no logo oficial (pedido da cliente em 23/11).
 - Logo oficial no hero, topo ao rolar, rodapé, ícones e og.jpg; trio de balões do logo nos títulos.
 - Hero: dois painéis em arco com o logo no meio (no celular, logo + um arco); o painel em arco (marca registrada das montagens dela), com as festas entrando de perto e se afastando até o painel inteiro.
-- Adornos em dourado: o balão de ar quente e o raminho pintados no painel do chá revelação (post de 2026).
+- Adornos em gravura vetorial (balão de ar quente e raminho), traço forte em dourado, e estampa de fundo em linha; gerador em Ferramentas/balao-magico-traco/desenha.py.
 - Pedido de orçamento monta a mensagem e abre o WhatsApp (43) 99112-0347.
 
 ## CONFIRMAR

@@ -15,7 +15,7 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:url(../img/grao.png);opacity:.5}
 .hero,.sec-tom,.topo,.gaveta,.rodape{
-  --bg:var(--roxo);--papel:rgba(255,255,255,.055);--tinta:#fff;--suave:#dccbe8;--cor:var(--ouro);--linha:rgba(246,192,58,.34);
+  --bg:var(--roxo);--papel:#4c1069;--tinta:#fff;--suave:#dccbe8;--cor:var(--ouro);--linha:rgba(246,192,58,.34);
   --bt:var(--ouro);--bt-t:var(--roxo2);--bt-h:var(--ouro2);--fio:var(--ouro);color:var(--tinta)}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
@@ -74,15 +74,45 @@ p{text-wrap:pretty}
 .hero.pronto .arco,.hero.pronto .selo{opacity:1;transform:none}
 .hero.pronto .hero-sub,.hero.pronto .bts{opacity:1}
 
-/* adornos: o balão e o raminho do painel do próprio Balão Mágico, no dourado do logo */
-.orn{position:absolute!important;z-index:0!important;pointer-events:none;user-select:none;-webkit-user-drag:none}
-.orn-canto{width:100px;top:88px;opacity:.6}
-.orn-canto.orn-e{left:calc(50% - 530px)}
-#sobre .orn-canto{width:150px;top:50%}
-#sobre .orn-canto.orn-e{left:calc(50% - 735px);transform:translateY(-50%)}
-#sobre .orn-canto.orn-d{right:calc(50% - 735px);transform:translateY(-50%) scaleX(-1)}
-@media (max-width:1500px){ #sobre .orn-canto{display:none} }
-.orn-canto.orn-d{right:calc(50% - 530px);transform:scaleX(-1)}
+/* adornos em gravura: balão e raminho do Balão Mágico, traço forte no dourado do logo */
+.orn{pointer-events:none;user-select:none;-webkit-user-drag:none}
+.orn-canto{position:absolute!important;z-index:0!important}
+.orn-canto.orn-d{transform:scaleX(-1)!important}
+#detalhes .orn-canto{width:232px;top:92px}
+#detalhes .orn-e{left:calc(50% - 592px)}#detalhes .orn-d{right:calc(50% - 592px)}
+#pedir .orn-canto{width:200px;bottom:210px}
+#pedir .orn-e{left:calc(50% - 592px)}#pedir .orn-d{right:calc(50% - 592px)}
+#sobre .orn-canto{width:124px;top:50%;transform:translateY(-50%)}
+#sobre .orn-e{left:calc(50% - 636px)}#sobre .orn-d{right:calc(50% - 636px);transform:translateY(-50%) scaleX(-1)!important}
+@media (min-width:1200px){
+  #detalhes .cab{min-height:270px;max-width:690px;display:flex;flex-direction:column;justify-content:center}
+}
+@media (min-width:1310px){ #sobre .sobre{max-width:990px} }
+@media (max-width:1309px){ #sobre .orn-canto{display:none} }
+@media (min-width:1400px){
+  #detalhes .orn-canto{width:296px;top:88px}
+  #detalhes .orn-e{left:calc(50% - 672px)}#detalhes .orn-d{right:calc(50% - 672px)}
+  #detalhes .cab{min-height:340px}
+  #pedir .orn-canto{width:270px;bottom:190px}
+  #pedir .orn-e{left:calc(50% - 680px)}#pedir .orn-d{right:calc(50% - 680px)}
+  #sobre .orn-canto{width:150px}
+  #sobre .orn-e{left:calc(50% - 690px)}#sobre .orn-d{right:calc(50% - 690px)}
+}
+@media (min-width:1640px){
+  #pedir .orn-canto{width:320px}
+  #pedir .orn-e{left:calc(50% - 760px)}#pedir .orn-d{right:calc(50% - 760px)}
+  #sobre .orn-canto{width:180px}
+  #sobre .orn-e{left:calc(50% - 760px)}#sobre .orn-d{right:calc(50% - 760px)}
+}
+@media (max-width:1199px){
+  .orn-canto.orn-d,#sobre .orn-canto{display:none}
+  #pedir .orn-canto{display:none}
+  #detalhes .orn-e{position:static!important;display:block;width:230px;margin:0 auto 22px}
+}
+/* fundo estampado em linha, mais presente nas bordas e limpo atrás do texto */
+.hero::before,.sec::before,.rodape::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:url(../img/orn/fundo-roxo.svg) 0 0/520px 520px round;opacity:.10;-webkit-mask-image:radial-gradient(70% 62% at 50% 50%,rgba(0,0,0,.25) 30%,#000 100%);mask-image:radial-gradient(70% 62% at 50% 50%,rgba(0,0,0,.25) 30%,#000 100%)}
+.hero::before,.sec-tom::before,.rodape::before{background-image:url(../img/orn/fundo-ouro.svg);opacity:.26}
+.rodape{position:relative}.rodape>*{position:relative;z-index:1}
 .trio{width:132px;margin:0 auto 22px;pointer-events:none;-webkit-user-drag:none}
 
 /* seções */
@@ -90,7 +120,7 @@ p{text-wrap:pretty}
 .sec>*{position:relative;z-index:1}
 .sec-tom{background:var(--bg);border-top:3px solid var(--ouro);border-bottom:3px solid var(--ouro)}
 .cab{max-width:760px;margin:0 auto 44px;text-align:center}
-.lead{color:var(--suave);margin-top:14px;font-size:18px}
+.lead{text-wrap:balance;color:var(--suave);margin-top:14px;font-size:18px}
 .rev{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .rev.vis{opacity:1;transform:none}
 
@@ -172,7 +202,6 @@ p{text-wrap:pretty}
 .lb-p{left:10px}.lb-s{right:10px}
 
 @media (max-width:1100px){
-  .orn-canto{display:none}
   .menu{gap:18px;font-size:14px}
   .menu-e a:nth-child(2){display:none}
 }
@@ -200,9 +229,11 @@ p{text-wrap:pretty}
   .loc{grid-template-columns:repeat(2,1fr);gap:10px}
   .sobre,.estudio{grid-template-columns:1fr}
   .sobre-txt{text-align:center}
-  .orn-canto{display:none}
   .sec{padding-top:108px}
   .trio{width:104px;margin-bottom:16px}
+  #detalhes .orn-e{width:210px;margin-bottom:18px}
+  .hero::before,.sec::before,.rodape::before{background-size:100% 400px;opacity:.07}
+  .hero::before,.sec-tom::before,.rodape::before{opacity:.17}
 }
 @media (max-width:560px){
   body{font-size:16px}
