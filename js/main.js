@@ -3,19 +3,40 @@
   var WA = '5543991120347';
   var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- hero: o painel em arco; cada festa entra de perto e se afasta até o painel inteiro ---------- */
-  var hero = d.querySelector('.hero'), fotos = [].slice.call(d.querySelectorAll('.ah')), atual = 0;
+  /* ---------- hero: dois painéis em arco; cada festa entra de perto e se afasta até o painel inteiro ---------- */
+  var hero = d.querySelector('.hero');
   requestAnimationFrame(function () { hero.classList.add('pronto'); });
-  if (!reduz && fotos.length > 1) {
-    var vis = true;
+  (function () {
+    var caixaE = d.querySelector('.arco-e .arco-in'), caixaD = d.querySelector('.arco-d .arco-in');
+    var doE = [].slice.call(caixaE.children), doD = [].slice.call(caixaD.children);
+    var arcoD = d.querySelector('.arco-d'), grupos = [], vez = 0, vis = true;
+    /* no celular só existe um arco: ele mostra todas as festas */
+    function montar() {
+      var um = getComputedStyle(arcoD).display === 'none';
+      doD.forEach(function (el) { (um ? caixaE : caixaD).appendChild(el); });
+      grupos = (um ? [doE.concat(doD)] : [doE, doD]).map(function (l) {
+        l.forEach(function (el, k) { el.classList.remove('sai'); el.classList.toggle('on', k === 0); });
+        return { l: l, i: 0 };
+      });
+      vez = 0;
+    }
+    montar();
+    addEventListener('resize', function () {
+      if ((getComputedStyle(arcoD).display === 'none' ? 1 : 2) !== grupos.length) montar();
+    });
+    if (reduz) return;
     new IntersectionObserver(function (es) { vis = es[0].isIntersecting; }).observe(hero);
+    var tempo = 0;
     setInterval(function () {
       if (!vis || d.hidden) return;
-      var a = fotos[atual]; atual = (atual + 1) % fotos.length; var b = fotos[atual];
+      tempo += 1;
+      if (grupos.length === 1 && tempo % 2) return;
+      var g = grupos[vez % grupos.length]; vez += 1;
+      var a = g.l[g.i]; g.i = (g.i + 1) % g.l.length; var b = g.l[g.i];
       b.classList.remove('sai'); b.style.animation = 'none'; void b.offsetWidth; b.style.animation = '';
       b.classList.add('on'); a.classList.add('sai'); a.classList.remove('on');
-    }, 5000);
-  }
+    }, 2500);
+  })();
 
   /* ---------- topo e gaveta ---------- */
   var topo = d.getElementById('topo'), gav = d.getElementById('gaveta'), burger = d.getElementById('burger');
