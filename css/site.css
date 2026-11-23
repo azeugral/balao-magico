@@ -214,3 +214,15 @@ p{text-wrap:pretty}
 .grade,.loc{gap:clamp(14px,1.6vw,22px)}
 .lb img{padding:clamp(8px,1vw,14px);background:var(--papel);border:1px solid rgba(142,36,73,.3)}
 @media (max-width:760px){ .grade,.loc{gap:12px} .fr{padding:6px} }
+
+/* celular: grupos sempre simétricos e seções curtas */
+@media (max-width:760px){
+  .filtros{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:440px;margin-left:auto;margin-right:auto}
+  .filtros button{grid-column:auto;white-space:nowrap}
+  .filtros > :first-child:nth-last-child(odd){grid-column:1/-1}
+  .chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .chips label{display:block}
+  .chips span{display:flex;align-items:center;justify-content:center;height:100%;text-align:center}
+  .chips > :last-child:nth-child(odd){grid-column:1/-1}
+}
+@media (max-width:360px){ .chapeu{display:flex;flex-direction:column;align-items:center;gap:4px} .chapeu i{display:none} }
