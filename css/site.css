@@ -207,3 +207,10 @@ p{text-wrap:pretty}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .rev,.item{opacity:1;transform:none}
 }
+
+/* molduras: passe-partout claro com fio vinho, como foto emoldurada */
+.fr{padding:clamp(7px,.8vw,12px);background:var(--papel);border:1px solid rgba(142,36,73,.3);box-shadow:0 24px 40px -28px rgba(43,33,31,.6)}
+.fr img{outline:1px solid rgba(43,33,31,.12)}
+.grade,.loc{gap:clamp(14px,1.6vw,22px)}
+.lb img{padding:clamp(8px,1vw,14px);background:var(--papel);border:1px solid rgba(142,36,73,.3)}
+@media (max-width:760px){ .grade,.loc{gap:12px} .fr{padding:6px} }
